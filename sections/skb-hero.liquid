@@ -1,0 +1,372 @@
+<section id="skb_hero" class="skb_hero_{{ section.id }}">
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'hero_top_section' %}
+                <div class="skb_hero_top_section clearfix">
+                    <div class="page-width clearfix">
+                        <div class="skb_hero_top_left">
+                            {% if block.settings.skb_htl_img != blank %}
+                                <img src="{{ block.settings.skb_htl_img | img_url: 'master' | prepend: 'https://' }}" alt="Hero image" class="skb_htl_image">
+                                {% else %}
+                                    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% endif %}
+                            
+            
+                            <div class="skb_htl_contents">
+                                {% if  block.settings.skb_htl_heading != blank %}
+                                    <div class="skb_htlc_heading">
+                                        {{ block.settings.skb_htl_heading }}
+                                    </div>
+                                {% endif %}
+
+                                {% if block.settings.skb_htl_btn_text != blank %}
+                                    <a href="{{ block.settings.skb_htl_btn_url }}" class="btn skb_htlc_btn">{{ block.settings.skb_htl_btn_text }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+            
+                        <div class="skb_hero_top_right">
+                            {% if block.settings.skb_htl_li_1 != blank and block.settings.skb_htl_li_cont_1 != blank %}
+                                <ul class="skb_htr_info_list">
+                                    {% if block.settings.skb_htl_li_1 != blank and block.settings.skb_htl_li_cont_1 != blank %}
+                                        <li class="skb_htril_item">
+                                            {% if block.settings.skb_htl_li_1 != blank %}
+                                                <spa class="htril_heading">{{ block.settings.skb_htl_li_1 }}</spa>
+                                            {% endif %}
+                                            {% if block.settings.skb_htl_li_cont_1 != blank %}
+                                                <span class="htril_content">{{ block.settings.skb_htl_li_cont_1 }}</span>
+                                            {% endif %}
+                                        </li> 
+                                    {% endif %}
+
+                                    {% if block.settings.skb_htl_li_2 != blank and block.settings.skb_htl_li_cont_2 != blank %}
+                                        <li class="skb_htril_item">
+                                            {% if block.settings.skb_htl_li_2 != blank %}
+                                                <spa class="htril_heading">{{ block.settings.skb_htl_li_2 }}</spa>
+                                            {% endif %}
+                                            {% if block.settings.skb_htl_li_cont_2 != blank %}
+                                                <span class="htril_content">{{ block.settings.skb_htl_li_cont_2 }}</span>
+                                            {% endif %}
+                                        </li> 
+                                    {% endif %}
+
+                                    {% if block.settings.skb_htl_li_3 != blank and block.settings.skb_htl_li_cont_3 != blank %}
+                                        <li class="skb_htril_item">
+                                            {% if block.settings.skb_htl_li_3 != blank %}
+                                                <spa class="htril_heading">{{ block.settings.skb_htl_li_3 }}</spa>
+                                            {% endif %}
+                                            {% if block.settings.skb_htl_li_cont_3 != blank %}
+                                                <span class="htril_content">{{ block.settings.skb_htl_li_cont_3 }}</span>
+                                            {% endif %}
+                                        </li> 
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if block.settings.skb_htl_img_right != blank %}
+                        <img src="{{ block.settings.skb_htl_img_right | img_url: 'master' | prepend: 'https://' }}" alt="image" class="skb_hero_top_section_img_box">
+                    {% endif %}
+                </div>
+           {% when 'hero_bottom_section' %}
+                <div class="skb_hero_bottom_section clearfix">
+                    {% if block.settings.hero_bottom_left_image != blank %}
+                        <div class="skb_hbs_left">
+                            <img src="{{ block.settings.hero_bottom_left_image | img_url: 'master' | prepend: 'https://' }}" alt="img" class="skb_hbs_left_img">
+                        </div>
+                    {% endif %}
+
+                  <div class="page-width clearfix">
+                    <div class="skb_hbs_right">
+                        <div class="skb_sri_wrapper">
+                            {% if block.settings.hero_bottom_right_heading != blank %}
+                                <div class="skb_hbs_right_heading">
+                                    {{ block.settings.hero_bottom_right_heading }}
+                                </div> 
+                            {% endif %}
+
+                            <div class="skb_sri_video">
+                                <div class="video-wrapper">
+                                    {%- if block.settings.video_url == blank -%}
+                                        <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                                    {%- else -%}
+                                        {%- if block.settings.video_url.type == "youtube" -%}
+                                        <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                                        {%- endif -%}
+                                        {%- if block.settings.video_url.type == "vimeo" -%}
+                                        <iframe src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?color={{ settings.color_button | remove: "#" }}&byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                                        {%- endif -%}
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                            {% if block.settings.hbr_star_1 != blank %}
+                                <ul class="skb_sri_stars">
+                                    {% if block.settings.hbr_star_1 != blank %}
+                                        <li><span><img src="{{ block.settings.hbr_star_1 | img_url: 'master' | prepend: 'https://' }}" alt="icon"></span></li>
+                                    {% endif %}
+                                    {% if block.settings.hbr_star_2 != blank %}
+                                        <li><span><img src="{{ block.settings.hbr_star_2 | img_url: 'master' | prepend: 'https://' }}" alt="icon"></span></li>
+                                    {% endif %}
+                                    {% if block.settings.hbr_star_3 != blank %}
+                                        <li><span><img src="{{ block.settings.hbr_star_3 | img_url: 'master' | prepend: 'https://' }}" alt="icon"></span></li>
+                                    {% endif %}
+                                    {% if block.settings.hbr_star_4 != blank %}
+                                        <li><span><img src="{{ block.settings.hbr_star_4 | img_url: 'master' | prepend: 'https://' }}" alt="icon"></span></li>
+                                    {% endif %}
+                                    {% if block.settings.hbr_star_5 != blank %}
+                                        <li><span><img src="{{ block.settings.hbr_star_5 | img_url: 'master' | prepend: 'https://' }}" alt="icon"></span></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+                            
+                            {% if block.settings.skb_hbr_title != blank %}
+                                <h3 class="skb_sri_heading">{{ block.settings.skb_hbr_title }}</h3>
+                            {% endif %}
+                            
+                            {% if block.settings.skb_hbr_sub_title != blank %}
+                                <p class="skb_sri_content">{{ block.settings.skb_hbr_sub_title }}</p>
+                            {% endif %}
+
+                            {% if block.settings.skb_hbrf_author != blank and block.settings.skb_hbrf_date != blank %}
+                                <div class="skb_sri_footer">
+                                    <span class="skb_sri_author">{{ block.settings.skb_hbrf_author }}</span>
+                                    <span class="skb_sri_date">{{ block.settings.skb_hbrf_date }}</span>
+                                </div>  
+                            {% endif %}
+                            {% if block.settings.skb_hbrf_btn_text != blank %}
+                                <a href="{{ block.settings.skb_hbrf_btn_url }}" class="skb_srhi_btn">{{ block.settings.skb_hbrf_btn_text }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                  </div>
+                  {% if block.settings.hero_bottom_right_image != blank %}
+                    <img src="{{ block.settings.hero_bottom_right_image | img_url: 'master' | prepend: 'https://' }}" alt="img" class="skb_hbs_right_img">
+                {% endif %}
+                </div>
+        {% endcase %}
+    {% endfor %}
+</section>
+
+{%- style -%}
+section#skb_hero {
+    color: {{ section.settings.skb_hero_color }};
+    background: {{ section.settings.skb_hero_bgc }};
+}
+{%- endstyle -%}
+
+
+{% schema %}
+{
+    "name": "SKB Hero",
+    "settings": [
+        {
+            "type": "color",
+            "id": "skb_hero_color",
+            "label": "Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "skb_hero_bgc",
+            "label": "Background",
+            "default": "#461962"
+        }
+        
+    ],
+    "blocks": [
+        {
+            "type": "hero_top_section",
+            "name": "Hero top section",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "skb_htl_img",
+                    "label": "Left image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "skb_htl_img_right",
+                    "label": "Right image"
+                },
+                {
+                    "type": "richtext",
+                    "id": "skb_htl_heading",
+                    "label": "Heading",
+                    "default": "<p>Kæmpe udvalg med ekspressfart.</p>"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_htl_btn_text",
+                    "label": "Button title",
+                    "default": "Shop now"
+                },
+                {
+                    "type": "url",
+                    "id": "skb_htl_btn_url",
+                    "label": "Button url"
+                },
+                {
+                    "type": "header",
+                    "content": "List item-1"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_htl_li_1",
+                    "label": "Heading",
+                    "default": "Sendes i dag"
+                },
+                {
+                    "type": "textarea",
+                    "id": "skb_htl_li_cont_1",
+                    "label": "Contents",
+                    "default": "Bestil inden kl. 18 og vi sender i dag"
+                },
+                {
+                    "type": "header",
+                    "content": "List item-2"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_htl_li_2",
+                    "label": "Heading",
+                    "default": "Sendes i dag"
+                },
+                {
+                    "type": "textarea",
+                    "id": "skb_htl_li_cont_2",
+                    "label": "Contents",
+                    "default": "Bestil inden kl. 18 og vi sender i dag"
+                },
+                {
+                    "type": "header",
+                    "content": "List item-3"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_htl_li_3",
+                    "label": "Heading",
+                    "default": "Sendes i dag"
+                },
+                {
+                    "type": "textarea",
+                    "id": "skb_htl_li_cont_3",
+                    "label": "Contents",
+                    "default": "Bestil inden kl. 18 og vi sender i dag"
+                }
+            ]
+        },
+        {
+            "type": "hero_bottom_section",
+            "name": "Hero bottom section",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "hero_bottom_left_image",
+                    "label": "Left image"
+                },
+                {
+                    "type": "header",
+                    "content": "Right settings"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hero_bottom_right_image",
+                    "label": "Right image"
+                },
+                {
+                    "type": "richtext",
+                    "id": "hero_bottom_right_heading",
+                    "label": "Heading",
+                    "default": "<p>VI HAR GLADE KUNDER</p>"
+                },
+                {
+                    "type": "header",
+                    "content": "Video"
+                },
+                {
+                    "type": "video_url",
+                    "id": "video_url",
+                    "label": "Video link",
+                    "accept": ["youtube", "vimeo"]
+                },
+                {
+                    "type": "header",
+                    "content": "Stars"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hbr_star_1",
+                    "label": "Star icon-1"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hbr_star_2",
+                    "label": "Star icon-2"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hbr_star_3",
+                    "label": "Star icon-3"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hbr_star_4",
+                    "label": "Star icon-4"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hbr_star_5",
+                    "label": "Star icon-5"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_hbr_title",
+                    "label": "Title",
+                    "default": "Den bedste slikbutik ever"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_hbr_sub_title",
+                    "label": "Sub-title",
+                    "default": "Jeg er så tilfreds"
+                },
+                {
+                    "type": "header",
+                    "content": "Hero bottom right footer"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_hbrf_author",
+                    "label": "Author",
+                    "default": "Mette Sliksen"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_hbrf_date",
+                    "label": "Date",
+                    "default": "13.05.2021"
+                },
+                {
+                    "type": "text",
+                    "id": "skb_hbrf_btn_text",
+                    "label": "Button text",
+                    "default": "Shop now"
+                },
+                {
+                    "type": "url",
+                    "id": "skb_hbrf_btn_url",
+                    "label": "Button url"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "AAA",
+            "name":"SKB Hero"
+        }
+    ]
+}
+{% endschema %}

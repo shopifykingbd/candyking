@@ -1,0 +1,291 @@
+<section id="skb_intro">
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'intro_top' %}
+            <div class="skb_intro_top_section">
+                <div class="page-width clearfix">
+                    <div class="skb_intro_left">
+                        {% if block.settings.intor_top_heading != blank %}
+                            <div class="skb_intro_heading">
+                                {{ block.settings.intor_top_heading }}
+                            </div>  
+                        {% endif %}
+                            
+                        {% if block.settings.intro_list_1 != blank %}
+                            <ul class="skb_left_intro_list">
+                                <li>
+                                    {{ block.settings.intro_list_1 }}
+                                </li>
+                                <li>
+                                    {{ block.settings.intro_list_2 }}
+                                </li>
+                                <li>
+                                    {{ block.settings.intro_list_3 }}
+                                </li>
+                            </ul>
+                        {% endif %}
+                        {% if block.settings.intro_btn_title != blank %}
+                            <a href="{{ block.settings.intro_btn_url }}" class="skb_intro_list_btn btn">{{ block.settings.intro_btn_title }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if block.settings.intro_top_right_image != blank %}
+                    <img src="{{ block.settings.intro_top_right_image | img_url: 'master' | prepend: 'https://' }}" alt="Intro" class="skb_intro_right_img">
+                {% endif %}
+            </div>
+
+           {% when 'into_promo' %}
+           <div class="skb_intro_bottom_promo_section">
+                <div class="page-width clearfix">
+                    <div class="skb_intro_promo promo_left clearfix">
+                        <div class="skbipl_img">
+                            {% if block.settings.intro_left_image != blank %}
+                                <img src="{{ block.settings.intro_left_image | img_url: 'master' | prepend: 'https://' }}" alt="image">
+                                {% else %}
+                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% endif %}
+                        </div>
+        
+                        <div class="skbipl_content">
+                            <h4>{{ block.settings.intro_left_heading }}</h4>
+                            <p>{{ block.settings.intro_left_content }}</p>
+                        </div>
+                    </div>
+        
+                    <div class="skb_intro_promo promo_right">
+                        <div class="skbipr_img">
+                            {% if block.settings.intro_right_image != blank %}
+                                    <img src="{{ block.settings.intro_right_image | img_url: 'master' | prepend: 'https://' }}" alt="image">
+                                {% else %}
+                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% endif %}
+                        </div>
+        
+                        <div class="skbipr_content">
+                            <h4>{{ block.settings.intro_right_heading }}</h4>
+                            <p>{{ block.settings.intro_right_content }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endcase %}
+    {% endfor %}
+</section>
+
+{%- style -%}
+.skb_intro_top_section {
+    background: {{ section.settings.intro_top_bg_color }};
+    color: {{ section.settings.intro_top_color }};
+}
+@media (min-width: 1025px) and (max-width: 1230px) {
+    .skb_intro_bottom_promo_section {
+        background: {{ section.settings.intro_top_bg_color }};
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .skb_intro_bottom_promo_section {
+        background: {{ section.settings.intro_top_bg_color }};
+    }  
+}
+@media (max-width: 767px) {
+    .skb_intro_bottom_promo_section {
+        background: {{ section.settings.intro_top_bg_color }};
+    }  
+}
+ul.skb_left_intro_list li p {
+    color: {{ section.settings.intro_list_number_color }};
+}
+ul.skb_left_intro_list li:before {
+  background: {{ section.settings.intro_list_number_bg_color }};
+}
+.skbipl_content h4,
+.skbipl_content p {
+    color: {{ section.settings.promo_left_color }};
+}
+.skb_intro_promo.promo_left {
+    background: {{ section.settings.promo_left_bg_color }};
+}
+.skbipl_img {
+    background: {{ section.settings.promo_left_Image_bg_color }};
+}
+.skb_intro_promo.promo_right {
+    background: {{ section.settings.promo_right_bg_color }};
+}
+.skbipr_content h4,
+.skbipr_content p {
+    color: {{ section.settings.promo_right_color }};
+}
+{%- endstyle -%}
+
+
+{% schema %}
+{
+    "name": "SKB Intro",
+    "settings": [
+        {
+            "type": "color",
+            "id": "intro_top_color",
+            "label": "Color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "intro_top_bg_color",
+            "label": "Background",
+            "default": "#461962"
+        },
+        {
+            "type": "color",
+            "id": "intro_list_number_color",
+            "label": "List number color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "intro_list_number_bg_color",
+            "label": "List number Background",
+            "default": "#F68D39"
+        },
+        {
+            "type": "color",
+            "id": "promo_left_color",
+            "label": "Promo left color",
+            "default": "#481964"
+        },
+        {
+            "type": "color",
+            "id": "promo_left_bg_color",
+            "label": "Promo left Background",
+            "default": "#FFDA3E"
+        },
+        {
+            "type": "color",
+            "id": "promo_left_Image_bg_color",
+            "label": "Promo left Image Background",
+            "default": "#FFDA3E"
+        },
+        {
+            "type": "color",
+            "id": "promo_right_bg_color",
+            "label": "Promo Right Background",
+            "default": "#FF849E"
+        },
+        {
+            "type": "color",
+            "id": "promo_right_color",
+            "label": "Promo Right color",
+            "default": "#ffffff"
+        }
+
+    ],
+    "blocks": [
+       {
+            "type": "intro_top",
+            "name": "Intro top section",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "intor_top_heading",
+                    "label": "Heading",
+                    "default": "<p>Bland Selv Slik: Så simpelt er det.</p>"
+                },
+                {
+                    "type": "header",
+                    "content": "Intro list"
+                },
+                {
+                    "type": "richtext",
+                    "id": "intro_list_1",
+                    "label": "Intro 1",
+                    "default": "<p>Vælg Bland Selv Slik og sortér</p>"
+                },
+                {
+                    "type": "richtext",
+                    "id": "intro_list_2",
+                    "label": "Intro 2",
+                    "default": "<p>Klik på de produkter, du ønsker i</p>"
+                },
+                {
+                    "type": "richtext",
+                    "id": "intro_list_3",
+                    "label": "Intro 3",
+                    "default": "<p>Læg i kurven, luk posen og tilføj</p>"
+                },
+                {
+                    "type": "text",
+                    "id": "intro_btn_title",
+                    "label": "Button text",
+                    "default": "bestil her"
+                },
+                {
+                    "type": "url",
+                    "id": "intro_btn_url",
+                    "label": "Button url"
+                },
+                {
+                    "type": "header",
+                    "content": "Intro right section"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "intro_top_right_image",
+                    "label": "Image"
+                }
+            ] 
+       },
+       {
+           "type": "into_promo",
+           "name": "Intro promo",
+           "limit": 1,
+           "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "intro_left_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "intro_left_heading",
+                    "label": "Heading",
+                    "default": "Mangler du inspiration?"
+                },
+                {
+                    "type": "textarea",
+                    "id": "intro_left_content",
+                    "label": "Content",
+                    "default": "Vi arbejder på færdigblandede bøtter med alle jeres favoritter – kommer snart!"
+                },
+                {
+                    "type": "header",
+                    "content": "Second promo"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "intro_right_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "intro_right_heading",
+                    "label": "Heading",
+                    "default": "Mangler du inspiration?"
+                },
+                {
+                    "type": "textarea",
+                    "id": "intro_right_content",
+                    "label": "Content",
+                    "default": "Vi arbejder på færdigblandede bøtter med alle jeres favoritter – kommer snart!"
+                }
+           ]
+       }
+    ],
+    "presets": [
+        {
+            "name": "SKB Intro",
+            "category": "AAA"
+        }
+    ]
+}
+{% endschema %}
